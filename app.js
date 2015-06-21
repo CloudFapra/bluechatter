@@ -14,6 +14,10 @@
 // limitations under the License.
 //------------------------------------------------------------------------------
 
+var dateOptions = {
+    weekday: "long", year: "numeric", month: "short",
+    day: "numeric", hour: "2-digit", minute: "2-digit"
+};
 var express = require("express");
 var fs = require('fs');
 var http = require('http');
@@ -72,7 +76,8 @@ app.get('/poll/*', function(req, res) {
 // Msg endpoint
 app.post('/msg', function(req, res) {
   message = req.body;
-  publisher.publish("chatter", JSON.stringify(message));
+  var stringDate=date.toLocaleTimeString("de-DE", options);
+  publisher.publish("chatter", stringDate.concat(JSON.stringify(message)));
   res.end();
 });
 
