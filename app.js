@@ -76,7 +76,7 @@ app.get('/poll/*', function(req, res) {
 // Msg endpoint
 app.post('/msg', function(req, res) {
   message = req.body;
-  var stringDate=date.toLocaleTimeString("de-DE", options);
+ // var stringDate=date.toLocaleTimeString("de-DE", options);
 //  publisher.publish("chatter", stringDate.concat(JSON.stringify(message)));
   publisher.publish("chatter", JSON.stringify(message));
   res.end();
